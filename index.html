@@ -54,6 +54,14 @@
       animation: pastelGradient 15s ease infinite;
       color: #2b2b2b;
       overflow-x: hidden;
+      -webkit-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+
+    img {
+      -webkit-user-drag: none;
+      user-drag: none;
     }
 
     @keyframes pastelGradient {
@@ -80,6 +88,7 @@
     }
 
     .profile-img-wrapper {
+      position: relative;
       width: 160px;
       height: 160px;
       margin: 0 auto 1.5rem;
@@ -96,6 +105,29 @@
       object-fit: cover;
       border-radius: 50%;
       border: 3px solid #fff;
+    }
+
+    .verified-badge {
+      position: absolute;
+      bottom: 5px;
+      right: 5px;
+      background-color: #3a86ff;
+      color: #ffffff;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      border: 3px solid #ffffff;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .verified-badge:hover {
+      transform: scale(1.15) rotate(10deg);
     }
 
     @keyframes pulseGlow {
@@ -248,6 +280,9 @@
     <div class="container">
       <div class="profile-img-wrapper" data-aos="zoom-in" data-aos-duration="1000">
         <img src="profile.png" alt="Jean Kathlyn Belarmino - Official Profile Picture">
+        <div class="verified-badge" title="Verified Official Account" data-bs-toggle="tooltip" data-bs-placement="top">
+          <i class="fa-solid fa-check"></i>
+        </div>
       </div>
       <h1 class="display-4 fw-bold mb-2" data-aos="fade-up" data-aos-delay="200">Jean Kathlyn Belarmino</h1>
       <p class="lead fw-light opacity-75 mb-4" data-aos="fade-up" data-aos-delay="400">Official Central Hub of Verified Profiles & Projects</p>
@@ -473,6 +508,31 @@
       offset: 50,
       duration: 800,
       easing: 'ease-in-out',
+    });
+
+    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+    var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+      return new bootstrap.Tooltip(tooltipTriggerEl)
+    })
+
+    document.addEventListener('contextmenu', function(e) {
+      e.preventDefault();
+      alert('Protected Content — Official Profile of Jean Kathlyn Belarmino');
+    });
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'F12') {
+        e.preventDefault();
+      }
+      if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'u') {
+        e.preventDefault();
+      }
+      if ((e.ctrlKey || e.metaKey) && e.shiftKey && e.key.toLowerCase() === 'i') {
+        e.preventDefault();
+      }
+      if ((e.ctrlKey || e.metaKey) && e.shiftKey && e.key.toLowerCase() === 'c') {
+        e.preventDefault();
+      }
     });
   </script>
 </body>
