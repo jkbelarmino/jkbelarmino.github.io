@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Primary Meta Tags for SEO -->
+  <title>Jean Kathlyn Belarmino | Official Profile & Links Hub</title>
+  <meta name="title" content="Jean Kathlyn Belarmino | Official Profile & Links Hub">
+  <meta name="description" content="The official central hub for Jean Kathlyn Belarmino. Explore verified professional profiles, GitHub software projects, and technical community contributions.">
+  <meta name="keywords" content="Jean Kathlyn Belarmino, software developer, technical profiles, Filipino tech, GitHub, LinkedIn">
+  <meta name="author" content="Jean Kathlyn Belarmino">
+
+  <!-- Open Graph / Social Media -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Jean Kathlyn Belarmino | Official Hub">
+  <meta property="og:description" content="The official central hub for Jean Kathlyn Belarmino's verified profiles.">
+  <meta property="og:image" content="https://yourwebsite.com/jean-kathlyn-belarmino.jpg">
+
+  <!-- SEO: Schema.org Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Jean Kathlyn Belarmino",
+    "url": "https://yourwebsite.com",
+    "image": "https://yourwebsite.com/jean-kathlyn-belarmino.jpg",
+    "jobTitle": "Technology Professional",
+    "sameAs": [
+      "https://www.linkedin.com/in/jean-kathlyn-belarmino",
+      "https://github.com/jkbelarmino",
+      "https://dev.to/jkbelarmino",
+      "https://about.me/jeankathlynbelarmino",
+      "https://linktr.ee/jeankathlynbelarmino"
+    ]
+  }
+  </script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- AOS Animation Library CSS -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f4f7f6;
+      color: #2b2b2b;
+      overflow-x: hidden;
+    }
+
+    /* Animated Gradient Hero Section */
+    .hero {
+      background: linear-gradient(-45deg, #0f172a, #1e293b, #1f3c88, #3a86ff);
+      background-size: 400% 400%;
+      animation: gradientBG 12s ease infinite;
+      color: white;
+      padding: 5rem 1rem 7rem 1rem;
+      position: relative;
+      clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+      margin-bottom: 3rem;
+    }
+
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* Profile Image with Glow Pulse */
+    .profile-img-wrapper {
+      width: 160px;
+      height: 160px;
+      margin: 0 auto 1.5rem;
+      border-radius: 50%;
+      padding: 5px;
+      background: rgba(255, 255, 255, 0.2);
+      box-shadow: 0 0 20px rgba(58, 134, 255, 0.5);
+      animation: pulseGlow 3s infinite;
+    }
+
+    .profile-img-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 3px solid #fff;
+    }
+
+    @keyframes pulseGlow {
+      0% { box-shadow: 0 0 15px rgba(58, 134, 255, 0.4); }
+      50% { box-shadow: 0 0 30px rgba(58, 134, 255, 0.8); }
+      100% { box-shadow: 0 0 15px rgba(58, 134, 255, 0.4); }
+    }
+
+    /* Update Badge */
+    .update-badge {
+      background: rgba(255, 255, 255, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      backdrop-filter: blur(5px);
+      font-size: 0.8rem;
+      font-weight: 400;
+      letter-spacing: 0.5px;
+    }
+    
+    /* Contact Button Hover */
+    .btn-contact {
+      background-color: #ffffff;
+      color: #1f3c88;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+    
+    .btn-contact:hover {
+      background-color: #f8fbff;
+      color: #3a86ff;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    }
+
+    /* Section Headings */
+    .section-title {
+      font-weight: 700;
+      color: #1f3c88;
+      position: relative;
+      display: inline-block;
+      margin-bottom: 2rem;
+    }
+    
+    .section-title::after {
+      content: "";
+      position: absolute;
+      width: 50%;
+      height: 3px;
+      bottom: -8px;
+      left: 0;
+      background-color: #3a86ff;
+      border-radius: 5px;
+      transition: width 0.3s ease;
+    }
+
+    .section-container:hover .section-title::after {
+      width: 100%;
+    }
+
+    /* Modern Card Styles */
+    .link-card {
+      border: none;
+      border-radius: 15px;
+      background: #ffffff;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+      height: 100%;
+      overflow: hidden;
+    }
+
+    .link-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 15px 30px rgba(58, 134, 255, 0.15);
+      background: linear-gradient(135deg, #ffffff, #f8fbff);
+    }
+
+    .link-card a {
+      text-decoration: none;
+      color: #2b2b2b;
+      padding: 1.25rem 1.5rem;
+      display: flex;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+    }
+
+    .icon-box {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 50px;
+      height: 50px;
+      border-radius: 12px;
+      background: rgba(58, 134, 255, 0.1);
+      color: #3a86ff;
+      font-size: 1.5rem;
+      transition: all 0.3s ease;
+      flex-shrink: 0;
+    }
+
+    .link-card:hover .icon-box {
+      background: #3a86ff;
+      color: #fff;
+      transform: rotate(5deg) scale(1.1);
+    }
+
+    /* Text Formatting for Buttons */
+    .text-content {
+      flex-grow: 1;
+      margin-left: 1rem;
+      text-align: left;
+    }
+
+    .link-title {
+      display: block;
+      font-weight: 600;
+      font-size: 1.1rem;
+      line-height: 1.2;
+    }
+
+    .link-desc {
+      display: block;
+      font-size: 0.8rem;
+      color: #6c757d;
+      margin-top: 0.25rem;
+      font-weight: 400;
+    }
+
+    .action-icon {
+      color: #dee2e6;
+      font-size: 1rem;
+      transition: transform 0.3s ease, color 0.3s ease;
+    }
+
+    .link-card:hover .action-icon {
+      color: #3a86ff;
+      transform: translateX(5px);
+    }
+    
+    /* Video Card specific override */
+    .video-card:hover {
+      transform: none;
+      background: #ffffff;
+    }
+
+    footer {
+      background: #ffffff;
+      border-top: 1px solid #eaeaea;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Hero Section -->
+  <header class="hero text-center">
+    <div class="container">
+      <div class="profile-img-wrapper" data-aos="zoom-in" data-aos-duration="1000">
+        <img src="file:///C:/Users/ADMIN/Pictures/JKB/Jean%20Kathlyn%20Belarmino%20official%20profile%20photo.png" alt="Jean Kathlyn Belarmino - Official Profile Picture">
+      </div>
+      <h1 class="display-4 fw-bold mb-2" data-aos="fade-up" data-aos-delay="200">Jean Kathlyn Belarmino</h1>
+      <p class="lead fw-light opacity-75 mb-4" data-aos="fade-up" data-aos-delay="400">Official Central Hub of Verified Profiles & Projects</p>
+      
+      <!-- Professional "Last Updated" Badge -->
+      <div data-aos="fade-up" data-aos-delay="500">
+        <span class="badge rounded-pill update-badge px-3 py-2">
+          <i class="fa-regular fa-clock me-1"></i> Last Updated: September 17, 2026
+        </span>
+      </div>
+      
+      <!-- Get In Touch Button (Jotform) -->
+      <div class="mt-4" data-aos="fade-up" data-aos-delay="600">
+        <a href="https://form.jotform.com/252281345586058" target="_blank" rel="noopener" class="btn btn-contact rounded-pill px-4 py-2 fw-semibold">
+          <i class="fa-regular fa-envelope me-2"></i> Get in Touch
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content Container -->
+  <main class="container mb-5">
+    
+    <!-- Primary Authority Anchors -->
+    <section class="section-container mb-5" data-aos="fade-up">
+      <h2 class="section-title h3">Primary Authority Anchors</h2>
+      <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 mt-2">
+        <div class="col">
+          <div class="card link-card">
+            <a href="https://www.linkedin.com/in/jean-kathlyn-belarmino" target="_blank" rel="noopener" title="Jean Kathlyn Belarmino LinkedIn Profile">
+              <div class="icon-box"><i class="fa-brands fa-linkedin-in"></i></div>
+              <div class="text-content">
+                <span class="link-title">LinkedIn</span>
+                <span class="link-desc">Professional resume & network</span>
+              </div>
+              <i class="fa-solid fa-chevron-right action-icon"></i>
+            </a>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card link-card">
+            <a href="https://github.com/jkbelarmino" target="_blank" rel="noopener" title="Jean Kathlyn Belarmino GitHub Projects">
+              <div class="icon-box"><i class="fa-brands fa-github"></i></div>
+              <div class="text-content">
+                <span class="link-title">GitHub</span>
+                <span class="link-desc">Open-source software & code</span>
+              </div>
+              <i class="fa-solid fa-chevron-right action-icon"></i>
+            </a>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card link-card">
+            <a href="https://dev.to/jkbelarmino" target="_blank" rel="noopener" title="Jean Kathlyn Belarmino Dev.to Articles">
+              <div class="icon-box"><i class="fa-brands fa-dev"></i></div>
+              <div class="text-content">
+                <span class="link-title">dev.to</span>
+                <span class="link-desc">Technical writing & tutorials</span>
+              </div>
+              <i class="fa-solid fa-chevron-right action-icon"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Secondary Identity Hubs -->
+    <section class="section-container mb-5" data-aos="fade-up" data-aos-delay="100">
+      <h2 class="section-title h3">Secondary Identity Hubs</h2>
+      <div class="row row-cols-1 row-cols-md-2 row-cols-lg-2 g-4 mt-2">
+        <div class="col">
+          <div class="card link-card">
+            <a href="https://about.me/jeankathlynbelarmino" target="_blank" rel="noopener" title="About Jean Kathlyn Belarmino">
+              <div class="icon-box"><i class="fa-solid fa-address-card"></i></div>
+              <div class="text-content">
+                <span class="link-title">About.me</span>
+                <span class="link-desc">Personal biography & overview</span>
+              </div>
+              <i class="fa-solid fa-chevron-right action-icon"></i>
+            </a>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card link-card">
+            <a href="https://linktr.ee/jeankathlynbelarmino" target="_blank" rel="noopener" title="Jean Kathlyn Belarmino Linktree">
+              <div class="icon-box"><i class="fa-solid fa-link"></i></div>
+              <div class="text-content">
+                <span class="link-title">Linktree</span>
+                <span class="link-desc">Quick-access social routing</span>
+              </div>
+              <i class="fa-solid fa-chevron-right action-icon"></i>
+            </a>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card link-card">
+            <a href="https://jkbelarmino.github.io/techmuseum/" target="_blank" rel="noopener" title="Tech Museum by Jean Kathlyn Belarmino">
+              <div class="icon-box"><i class="fa-solid fa-museum"></i></div>
+              <div class="text-content">
+                <span class="link-title">Tech Museum</span>
+                <span class="link-desc">Historical tech showcase</span>
+              </div>
+              <i class="fa-solid fa-chevron-right action-icon"></i>
+            </a>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card link-card">
+            <a href="https://jkbelarmino.github.io/Filipino_Tech_Archive/" target="_blank" rel="noopener" title="Filipino Tech Archive">
+              <div class="icon-box"><i class="fa-solid fa-box-archive"></i></div>
+              <div class="text-content">
+                <span class="link-title">Filipino Tech Archive</span>
+                <span class="link-desc">Archiving local tech history</span>
+              </div>
+              <i class="fa-solid fa-chevron-right action-icon"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Technical Community Profiles -->
+    <section class="section-container mb-5" data-aos="fade-up" data-aos-delay="200">
+      <h2 class="section-title h3">Technical Community Profiles</h2>
+      <div class="row row-cols-1 row-cols-md-2 g-4 mt-2">
+        <div class="col">
+          <div class="card link-card">
+            <a href="https://stackoverflow.com/users/yourid" target="_blank" rel="noopener" title="Jean Kathlyn Belarmino on Stack Overflow">
+              <div class="icon-box"><i class="fa-brands fa-stack-overflow"></i></div>
+              <div class="text-content">
+                <span class="link-title">Stack Overflow</span>
+                <span class="link-desc">Developer Q&A and solutions</span>
+              </div>
+              <i class="fa-solid fa-chevron-right action-icon"></i>
+            </a>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card link-card">
+            <a href="https://stackexchange.com/users/yourid" target="_blank" rel="noopener" title="Jean Kathlyn Belarmino on Stack Exchange">
+              <div class="icon-box"><i class="fa-brands fa-stack-exchange"></i></div>
+              <div class="text-content">
+                <span class="link-title">Stack Exchange</span>
+                <span class="link-desc">Broader tech community insights</span>
+              </div>
+              <i class="fa-solid fa-chevron-right action-icon"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Creative & Cultural Identity -->
+    <section class="section-container mb-5" data-aos="fade-up" data-aos-delay="300">
+      <h2 class="section-title h3">Creative & Cultural Identity</h2>
+      <div class="row row-cols-1 row-cols-md-2 g-4 mt-2">
+        <div class="col">
+          <div class="card link-card">
+            <a href="https://www.pinterest.com/jeankathlynbelarmino007/" target="_blank" rel="noopener" title="Jean Kathlyn Belarmino Pinterest Boards">
+              <div class="icon-box"><i class="fa-brands fa-pinterest"></i></div>
+              <div class="text-content">
+                <span class="link-title">Pinterest</span>
+                <span class="link-desc">Visual inspiration & design ideas</span>
+              </div>
+              <i class="fa-solid fa-chevron-right action-icon"></i>
+            </a>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card link-card">
+            <a href="https://www.goodreads.com/user/show/yourid" target="_blank" rel="noopener" title="Jean Kathlyn Belarmino Books on Goodreads">
+              <div class="icon-box"><i class="fa-brands fa-goodreads"></i></div>
+              <div class="text-content">
+                <span class="link-title">Goodreads</span>
+                <span class="link-desc">Reading lists & reviews</span>
+              </div>
+              <i class="fa-solid fa-chevron-right action-icon"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Video / Music Vibe Section -->
+    <section class="section-container mb-4" data-aos="fade-up" data-aos-delay="400">
+      <h2 class="section-title h3">Featured Vibe</h2>
+      <div class="card link-card video-card p-3 mt-2">
+        <div class="ratio ratio-16x9 rounded overflow-hidden">
+          <iframe src="https://www.youtube.com/embed/MBfjeFr67Ls?start=44&autoplay=1&rel=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        <div class="text-center mt-3 mb-1">
+          <span class="link-desc" style="font-size: 0.9rem;"><i class="fa-solid fa-headphones me-2"></i>Current listening vibe</span>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="text-center py-4 text-muted">
+    <div class="container">
+      <small>&copy; 2026 Jean Kathlyn Belarmino. I do not maintain official accounts outside these platforms.</small>
+    </div>
+  </footer>
+
+  <!-- Bootstrap 5 JS Bundle (Includes Popper) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  
+  <!-- AOS Animation Library JS -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  
+  <!-- Initialize Animations -->
+  <script>
+    AOS.init({
+      once: true,
+      offset: 50,
+      duration: 800,
+      easing: 'ease-in-out',
+    });
+  </script>
+</body>
+</html>
