@@ -46,9 +46,17 @@
   <style>
     body {
       font-family: 'Poppins', sans-serif;
-      background-color: #f4f7f6;
+      background: linear-gradient(-45deg, #f0f4ff, #fae8ff, #e0f2fe, #fce7f3);
+      background-size: 400% 400%;
+      animation: pastelGradient 15s ease infinite;
       color: #2b2b2b;
       overflow-x: hidden;
+    }
+
+    @keyframes pastelGradient {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
 
     .hero {
@@ -143,7 +151,8 @@
     .link-card {
       border: none;
       border-radius: 15px;
-      background: #ffffff;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(10px);
       transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
       box-shadow: 0 4px 15px rgba(0,0,0,0.05);
       height: 100%;
@@ -153,7 +162,7 @@
     .link-card:hover {
       transform: translateY(-8px);
       box-shadow: 0 15px 30px rgba(58, 134, 255, 0.15);
-      background: linear-gradient(135deg, #ffffff, #f8fbff);
+      background: rgba(255, 255, 255, 0.95);
     }
 
     .link-card a {
@@ -220,12 +229,13 @@
     
     .video-card:hover {
       transform: none;
-      background: #ffffff;
+      background: rgba(255, 255, 255, 0.85);
     }
 
     footer {
-      background: #ffffff;
-      border-top: 1px solid #eaeaea;
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(10px);
+      border-top: 1px solid rgba(226, 232, 240, 0.8);
     }
   </style>
 </head>
@@ -423,7 +433,6 @@
       </div>
     </section>
     
-    <!-- Restored "Just For Fun" Media Section -->
     <section class="section-container mb-4" data-aos="fade-up" data-aos-delay="400">
       <div class="d-flex align-items-center justify-content-between mb-3">
         <h2 class="section-title h3 mb-0">Just For Fun 🎉</h2>
@@ -438,7 +447,7 @@
         </div>
         <div class="text-center mt-3 mb-1">
           <span class="link-desc" style="font-size: 0.9rem;">
-            <i class="fa-solid fa-face-smile me-2 text-primary"></i>Life isn't all code & technical specs — here's what's currently on repeat!
+            <i class="fa-solid fa-face-smile me-2 text-primary"></i>Proof I don't just write code 24/7 — current favorite jam!
           </span>
         </div>
       </div>
