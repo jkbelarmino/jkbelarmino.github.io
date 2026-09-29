@@ -74,16 +74,30 @@
 body {
   font-family: 'Poppins', sans-serif;
   background-color: #fcfcfd;
-  background-image: url("/jkbelarmino_bgwallpaper.png");
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-position: right top;
-  background-size: auto 100vh;
   color: var(--text-dark);
   overflow-x: hidden;
+  position: relative;
+  isolation: isolate;
   -webkit-user-select: none;
   -ms-user-select: none;
   user-select: none;
+}
+
+/* Transparent decorative wallpaper, continuous down the right side */
+body::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 48%;
+  background-image: url("/jkbelarmino_bgwallpaper.png");
+  background-repeat: repeat-y;
+  background-position: right top;
+  background-size: 100% auto;
+  opacity: 0.35;
+  pointer-events: none;
+  z-index: -1;
 }
     img {
       -webkit-user-drag: none;
@@ -99,7 +113,16 @@ body {
     
  
 .hero {
-  background: transparent;
+  background: linear-gradient(
+    -45deg,
+    #0a1128,
+    #101f42,
+    #1f3c88,
+    #0f2b5c,
+    #071530
+  );
+  background-size: 400% 400%;
+  animation: gradientBG 12s ease infinite;
   color: #ffffff;
   padding: 5rem 1rem 7.5rem 1rem;
   position: relative;
@@ -109,24 +132,7 @@ body {
   border-bottom: 3px solid var(--gold-bright);
 }
 
-.hero::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  background: linear-gradient(
-    -45deg,
-    rgba(10, 17, 40, 0.86),
-    rgba(16, 31, 66, 0.84),
-    rgba(31, 60, 136, 0.78),
-    rgba(15, 43, 92, 0.84),
-    rgba(7, 21, 48, 0.88)
-  );
-  background-size: 400% 400%;
-  animation: gradientBG 12s ease infinite;
-}
-
-    @keyframes gradientBG {
+@keyframes gradientBG {
       0% { background-position: 0% 50%; }
       50% { background-position: 100% 50%; }
       100% { background-position: 0% 50%; }
