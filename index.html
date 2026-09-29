@@ -83,7 +83,6 @@ body {
   user-select: none;
 }
 
-/* Transparent decorative wallpaper, continuous down the right side */
 body::before {
   content: "";
   position: fixed;
@@ -91,11 +90,11 @@ body::before {
   right: 0;
   width: 10%;
   height: 100vh;
-  background-image: url("/jkbelarmino_bgwallpaper.png");
+  background-image: url("https://jkbelarmino.github.io//jkbelarmino_bgwallpaper.png");
   background-repeat: repeat-y;
   background-position: right top;
   background-size: 100% auto;
-  opacity: 0.35;
+  opacity: 0.17;
   pointer-events: none;
   z-index: -1;
 }
@@ -113,7 +112,16 @@ body::before {
     
  
 .hero {
-  background: var(--navy-dark);
+  background: linear-gradient(
+    -45deg,
+    #0a1128,
+    #101f42,
+    #1f3c88,
+    #0f2b5c,
+    #071530
+  );
+  background-size: 400% 400%;
+  animation: gradientBG 12s ease infinite;
   color: #ffffff;
   padding: 5rem 1rem 7.5rem 1rem;
   position: relative;
