@@ -113,23 +113,14 @@ body::before {
     
  
 .hero {
-  background: linear-gradient(
-    -45deg,
-    #0a1128,
-    #101f42,
-    #1f3c88,
-    #0f2b5c,
-    #071530
-  );
-  background-size: 400% 400%;
-  animation: gradientBG 12s ease infinite;
+  background: var(--navy-dark);
   color: #ffffff;
   padding: 5rem 1rem 7.5rem 1rem;
   position: relative;
   isolation: isolate;
   clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
   margin-bottom: 3.5rem;
-  border-bottom: 3px solid var(--gold-bright);
+  border-bottom: 1px solid var(--gold-bright);
 }
 
 @keyframes gradientBG {
@@ -347,10 +338,15 @@ body::before {
     }
 
     footer {
-      background: rgba(255, 255, 255, 0.85);
-      backdrop-filter: blur(10px);
-      border-top: 1px solid rgba(212, 175, 55, 0.25);
-    }
+  background: var(--navy-dark);
+  color: #ffffff !important;
+  backdrop-filter: none;
+  border-top: 1px solid var(--gold-bright);
+}
+
+small{
+    color: #ece9e9 !important;
+}
   </style>
 </head>
 <body>
