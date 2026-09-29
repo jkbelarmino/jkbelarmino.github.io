@@ -1,14 +1,29 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
-  <!-- Dark Slate Background with Rounded Corners -->
-  <rect width="64" height="64" rx="14" fill="#0f172a" />
+  <defs>
+    <!-- Metallic Gold Gradient -->
+    <linearGradient id="goldLinear" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFE599" />
+      <stop offset="50%" stop-color="#D4AF37" />
+      <stop offset="100%" stop-color="#996515" />
+    </linearGradient>
+  </defs>
+
+  <!-- Deep Navy Royal Background -->
+  <rect width="64" height="64" rx="14" fill="#0A1628" />
   
-  <!-- Monogram Text "JKB" -->
-  <text x="50%" y="52%" 
+  <!-- Outer Gold Border Frame -->
+  <rect x="3.5" y="3.5" width="57" height="57" rx="11" fill="none" stroke="url(#goldLinear)" stroke-width="1.5" />
+  
+  <!-- Inner Subtle Gold Accent Ring -->
+  <rect x="6.5" y="6.5" width="51" height="51" rx="8" fill="none" stroke="url(#goldLinear)" stroke-width="0.75" stroke-opacity="0.5" />
+
+  <!-- Monogram JKB using Sitka Heading / Georgia Serif Typography -->
+  <text x="50%" y="52.5%" 
         dominant-baseline="central" 
         text-anchor="middle" 
-        fill="#38bdf8" 
-        font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" 
-        font-weight="800" 
-        font-size="25" 
-        letter-spacing="-1.5">JKB</text>
+        fill="url(#goldLinear)" 
+        font-family="'Sitka Heading', 'Sitka Banner', 'Georgia', 'Times New Roman', serif" 
+        font-weight="bold" 
+        font-size="22" 
+        letter-spacing="0.5">JKB</text>
 </svg>
