@@ -367,8 +367,17 @@ h1, h2, h3, .serif-heading {
       background: var(--card-bg);
     }
 
-    footer {
-  background: var(--navy-dark);
+footer {
+  background: linear-gradient(
+    -45deg,
+    #0a1128,
+    #101f42,
+    #1f3c88,
+    #0f2b5c,
+    #071530
+  );
+  background-size: 400% 400%;
+  animation: gradientBG 12s ease infinite;
   color: #ffffff !important;
   backdrop-filter: none;
   border-top: 1px solid var(--gold-bright);
