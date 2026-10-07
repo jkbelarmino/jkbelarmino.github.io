@@ -386,6 +386,98 @@ footer {
 small{
     color: #ece9e9 !important;
 }
+
+    .vibe-queue {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      margin-top: 0.9rem;
+      padding: 0.65rem 0.7rem;
+      border: 1px solid var(--gold-border);
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.72);
+      overflow: hidden;
+    }
+
+    .vibe-queue-btn {
+      flex: 0 0 38px;
+      width: 38px;
+      height: 38px;
+      border: 1px solid var(--gold-border);
+      border-radius: 50%;
+      background: #ffffff;
+      color: var(--navy-dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      padding: 0;
+    }
+
+    .vibe-queue-btn:hover:not(:disabled) {
+      background: var(--navy-dark);
+      color: var(--gold-bright);
+      border-color: var(--gold-bright);
+      transform: scale(1.06);
+    }
+
+    .vibe-queue-btn:disabled {
+      opacity: 0.35;
+      cursor: default;
+    }
+
+    .vibe-queue-window {
+      flex: 1;
+      min-width: 0;
+      overflow: hidden;
+    }
+
+    .vibe-queue-track {
+      display: flex;
+      gap: 0.55rem;
+      width: max-content;
+      transition: transform 0.3s ease;
+    }
+
+    .vibe-track {
+      flex: 0 0 auto;
+      border: 1px solid var(--gold-border);
+      border-radius: 999px;
+      background: #ffffff;
+      color: var(--navy-dark);
+      padding: 0.5rem 0.9rem;
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.8rem;
+      line-height: 1;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.25s ease;
+    }
+
+    .vibe-track:hover {
+      border-color: var(--gold-bright);
+      transform: translateY(-1px);
+    }
+
+    .vibe-track.active {
+      background: var(--navy-dark);
+      color: #ffffff;
+      border-color: var(--gold-bright);
+      box-shadow: 0 3px 10px rgba(11, 21, 40, 0.15);
+    }
+
+    .vibe-now-playing {
+      margin-top: 0.65rem;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    .vibe-now-playing strong {
+      color: var(--navy-dark);
+      font-weight: 600;
+    }
+
   </style>
 </head>
 <body>
@@ -609,6 +701,18 @@ small{
   allowfullscreen>
 </iframe>
         </div>
+        <div class="vibe-queue" aria-label="Music queue">
+          <button class="vibe-queue-btn" id="vibe-prev" type="button" aria-label="Previous song">
+            <i class="fa-solid fa-chevron-left"></i>
+          </button>
+          <div class="vibe-queue-window" id="vibe-queue-window">
+            <div class="vibe-queue-track" id="vibe-queue-track"></div>
+          </div>
+          <button class="vibe-queue-btn" id="vibe-next" type="button" aria-label="Next song">
+            <i class="fa-solid fa-chevron-right"></i>
+          </button>
+        </div>
+        <div class="vibe-now-playing text-center" id="vibe-now-playing"></div>
         <div class="text-center mt-3 mb-1">
           <span class="link-desc" style="font-size: 0.88rem;">
             <i class="fa-solid fa-headphones me-2" style="color: var(--gold-primary);"></i>Life isn't all code & technical specs — here's what's currently on repeat!
@@ -627,6 +731,116 @@ small{
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://www.youtube.com/iframe_api"></script>
+
+  <script>
+    const vibeQueue = [
+      { id: 'b7k0a5hYnSI', title: 'Unwritten', start: 0 },
+      { id: 'MBfjeFr67Ls', title: 'Chali 2na', start: 44 }
+    ];
+
+    let vibePlayer;
+    let vibeCurrentIndex = 0;
+    let vibeQueueOffset = 0;
+
+    function onYouTubeIframeAPIReady() {
+      vibePlayer = new YT.Player('vibe-player', {
+        events: {
+          onReady: function() {
+            renderVibeQueue();
+            playVibeTrack(0);
+          },
+          onStateChange: onVibePlayerStateChange
+        }
+      });
+    }
+
+    function playVibeTrack(index) {
+      if (!vibePlayer || !vibeQueue[index]) return;
+      vibeCurrentIndex = index;
+      vibePlayer.loadVideoById({
+        videoId: vibeQueue[index].id,
+        startSeconds: vibeQueue[index].start
+      });
+      renderVibeQueue();
+    }
+
+    function nextVibeTrack() {
+      playVibeTrack((vibeCurrentIndex + 1) % vibeQueue.length);
+    }
+
+    function previousVibeTrack() {
+      playVibeTrack((vibeCurrentIndex - 1 + vibeQueue.length) % vibeQueue.length);
+    }
+
+    function renderVibeQueue() {
+      const track = document.getElementById('vibe-queue-track');
+      const nowPlaying = document.getElementById('vibe-now-playing');
+      const prev = document.getElementById('vibe-prev');
+      const next = document.getElementById('vibe-next');
+
+      track.innerHTML = vibeQueue.map(function(song, index) {
+        return '<button class="vibe-track' +
+          (index === vibeCurrentIndex ? ' active' : '') +
+          '" type="button" data-vibe-index="' + index + '">' +
+          (index + 1) + '. ' + song.title +
+          '</button>';
+      }).join('');
+
+      track.querySelectorAll('.vibe-track').forEach(function(button) {
+        button.addEventListener('click', function() {
+          playVibeTrack(Number(this.dataset.vibeIndex));
+        });
+      });
+
+      nowPlaying.innerHTML =
+        '<i class="fa-solid fa-music me-1" style="color: var(--gold-primary);"></i>' +
+        'Now Playing: <strong>' + vibeQueue[vibeCurrentIndex].title + '</strong>';
+
+      prev.disabled = vibeQueue.length < 2;
+      next.disabled = vibeQueue.length < 2;
+
+      panVibeQueueToCurrent();
+    }
+
+    function panVibeQueueToCurrent() {
+      const windowEl = document.getElementById('vibe-queue-window');
+      const track = document.getElementById('vibe-queue-track');
+      const active = track.querySelector('.vibe-track.active');
+
+      if (!active) return;
+
+      const target = active.offsetLeft -
+        (windowEl.clientWidth / 2) +
+        (active.offsetWidth / 2);
+
+      const maxOffset = Math.max(0, track.scrollWidth - windowEl.clientWidth);
+      vibeQueueOffset = Math.min(Math.max(0, target), maxOffset);
+      track.style.transform = 'translateX(-' + vibeQueueOffset + 'px)';
+    }
+
+    document.getElementById('vibe-prev').addEventListener('click', previousVibeTrack);
+    document.getElementById('vibe-next').addEventListener('click', nextVibeTrack);
+
+    document.getElementById('vibe-queue-window').addEventListener('wheel', function(e) {
+      const track = document.getElementById('vibe-queue-track');
+      const maxOffset = Math.max(0, track.scrollWidth - this.clientWidth);
+
+      if (maxOffset <= 0) return;
+
+      e.preventDefault();
+      vibeQueueOffset += e.deltaY || e.deltaX;
+      vibeQueueOffset = Math.min(Math.max(0, vibeQueueOffset), maxOffset);
+      track.style.transform = 'translateX(-' + vibeQueueOffset + 'px)';
+    }, { passive: false });
+
+    window.addEventListener('resize', panVibeQueueToCurrent);
+
+    function onVibePlayerStateChange(event) {
+      if (event.data === YT.PlayerState.ENDED) {
+        nextVibeTrack();
+      }
+    }
+  </script>
 
   <script>
     let vibePlayer;
