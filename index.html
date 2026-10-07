@@ -387,6 +387,7 @@ small{
     color: #ece9e9 !important;
 }
 
+
     .vibe-queue {
       display: flex;
       align-items: center;
@@ -415,16 +416,11 @@ small{
       padding: 0;
     }
 
-    .vibe-queue-btn:hover:not(:disabled) {
+    .vibe-queue-btn:hover {
       background: var(--navy-dark);
       color: var(--gold-bright);
       border-color: var(--gold-bright);
       transform: scale(1.06);
-    }
-
-    .vibe-queue-btn:disabled {
-      opacity: 0.35;
-      cursor: default;
     }
 
     .vibe-queue-window {
@@ -747,7 +743,6 @@ small{
         events: {
           onReady: function() {
             renderVibeQueue();
-            playVibeTrack(0);
           },
           onStateChange: onVibePlayerStateChange
         }
@@ -756,11 +751,14 @@ small{
 
     function playVibeTrack(index) {
       if (!vibePlayer || !vibeQueue[index]) return;
+
       vibeCurrentIndex = index;
+
       vibePlayer.loadVideoById({
         videoId: vibeQueue[index].id,
         startSeconds: vibeQueue[index].start
       });
+
       renderVibeQueue();
     }
 
@@ -775,8 +773,8 @@ small{
     function renderVibeQueue() {
       const track = document.getElementById('vibe-queue-track');
       const nowPlaying = document.getElementById('vibe-now-playing');
-      const prev = document.getElementById('vibe-prev');
-      const next = document.getElementById('vibe-next');
+
+      if (!track || !nowPlaying) return;
 
       track.innerHTML = vibeQueue.map(function(song, index) {
         return '<button class="vibe-track' +
@@ -796,42 +794,44 @@ small{
         '<i class="fa-solid fa-music me-1" style="color: var(--gold-primary);"></i>' +
         'Now Playing: <strong>' + vibeQueue[vibeCurrentIndex].title + '</strong>';
 
-      prev.disabled = vibeQueue.length < 2;
-      next.disabled = vibeQueue.length < 2;
-
       panVibeQueueToCurrent();
     }
 
     function panVibeQueueToCurrent() {
       const windowEl = document.getElementById('vibe-queue-window');
       const track = document.getElementById('vibe-queue-track');
-      const active = track.querySelector('.vibe-track.active');
+      const active = track ? track.querySelector('.vibe-track.active') : null;
 
-      if (!active) return;
+      if (!windowEl || !track || !active) return;
 
       const target = active.offsetLeft -
         (windowEl.clientWidth / 2) +
         (active.offsetWidth / 2);
 
       const maxOffset = Math.max(0, track.scrollWidth - windowEl.clientWidth);
+
       vibeQueueOffset = Math.min(Math.max(0, target), maxOffset);
       track.style.transform = 'translateX(-' + vibeQueueOffset + 'px)';
     }
 
-    document.getElementById('vibe-prev').addEventListener('click', previousVibeTrack);
-    document.getElementById('vibe-next').addEventListener('click', nextVibeTrack);
+    document.addEventListener('DOMContentLoaded', function() {
+      document.getElementById('vibe-prev').addEventListener('click', previousVibeTrack);
+      document.getElementById('vibe-next').addEventListener('click', nextVibeTrack);
 
-    document.getElementById('vibe-queue-window').addEventListener('wheel', function(e) {
-      const track = document.getElementById('vibe-queue-track');
-      const maxOffset = Math.max(0, track.scrollWidth - this.clientWidth);
+      document.getElementById('vibe-queue-window').addEventListener('wheel', function(e) {
+        const track = document.getElementById('vibe-queue-track');
+        const maxOffset = Math.max(0, track.scrollWidth - this.clientWidth);
 
-      if (maxOffset <= 0) return;
+        if (maxOffset <= 0) return;
 
-      e.preventDefault();
-      vibeQueueOffset += e.deltaY || e.deltaX;
-      vibeQueueOffset = Math.min(Math.max(0, vibeQueueOffset), maxOffset);
-      track.style.transform = 'translateX(-' + vibeQueueOffset + 'px)';
-    }, { passive: false });
+        e.preventDefault();
+
+        vibeQueueOffset += e.deltaY || e.deltaX;
+        vibeQueueOffset = Math.min(Math.max(0, vibeQueueOffset), maxOffset);
+
+        track.style.transform = 'translateX(-' + vibeQueueOffset + 'px)';
+      }, { passive: false });
+    });
 
     window.addEventListener('resize', panVibeQueueToCurrent);
 
@@ -842,26 +842,7 @@ small{
     }
   </script>
 
-  <script>
-    let vibePlayer;
 
-    function onYouTubeIframeAPIReady() {
-      vibePlayer = new YT.Player('vibe-player', {
-        events: {
-          onStateChange: onVibePlayerStateChange
-        }
-      });
-    }
-
-    function onVibePlayerStateChange(event) {
-      if (event.data === YT.PlayerState.ENDED) {
-        vibePlayer.loadVideoById({
-          videoId: 'MBfjeFr67Ls',
-          startSeconds: 44
-        });
-      }
-    }
-  </script>
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   
   <script>
